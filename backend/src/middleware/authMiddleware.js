@@ -1,7 +1,7 @@
-const jwt =require("jsonwebtoken");
-const User = require("../models/userModel");
+import  jwt from "jsonwebtoken";
+import  User from "../models/userModel.js";
 
-module.exports.protectRoute =async(req,res,next) =>{
+export const protectRoute =async(req,res,next) =>{
     try{
         const token = req.cookies.jwt;
 
