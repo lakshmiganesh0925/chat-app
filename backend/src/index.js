@@ -1,12 +1,12 @@
 const express = require('express');
-const dotenv = require("dotenv")
-const cookieParser = require("cookie-parser")
-const cors = require("cors");
-const authRoutes = require('./routes/authRoutes');
-const messageRoutes = require("./routes/messageRoutes")
-const { connectDB } = require('./lib/db');
-const {app,server}  = require("./lib/socket");
-const path = require("path");
+import dotenv from "dotenv"
+import cookieParse  from "cookie-parser"
+import cors from "cors"
+import  authRoutes  from './routes/authRoutes'
+import  messageRoutes from "./routes/messageRoutes"
+import { connectDB } from './lib/db';
+import  {app,server}  from "./lib/socket";
+import  path  from "path";
 
 
 dotenv.config()
