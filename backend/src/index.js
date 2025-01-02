@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express';
 import dotenv from "dotenv"
 import cookieParse  from "cookie-parser"
 import cors from "cors"
