@@ -1,9 +1,9 @@
-const User = require("../models/userModel");
-const Message = require("../models/messageModel");
-const cloudinary = require("../lib/cloudinary");
-const { getReceiverSocketId } = require("../lib/socket");
+import User  from "../models/userModel.js";
+import Message from "../models/messageModel.js";
+import cloudinary from "../lib/cloudinary.js";
+import { getReceiverSocketId ,io } from "../lib/socket.js";
 
-module.exports.getUsersForSidebar = async(req,res)=>{
+export const getUsersForSidebar = async(req,res)=>{
     try{
      const loggedInUserId = req.user._id;
      const filteredUsers = await User.find({_id:{$ne:loggedInUserId}}).select("-password");
@@ -15,7 +15,7 @@ module.exports.getUsersForSidebar = async(req,res)=>{
     }
 }
 
-module.exports.getMessages = async(req,res)=>{
+export const getMessages = async(req,res)=>{
     try{
         const {id:userToChatId} =req.params
         const myId= req.user._id
@@ -33,7 +33,7 @@ module.exports.getMessages = async(req,res)=>{
     }
 }
 
-module.exports.sendMessage = async(req,res)=>{
+export const sendMessage = async(req,res)=>{
     try{
        const {text,image} = req.body;
        const {id:receiverId} = req.params;
