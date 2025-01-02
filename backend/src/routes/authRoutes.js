@@ -1,6 +1,6 @@
-const express = require('express');
-const { login, signup, logout,updateProfile, checkAuth } = require('../controllers/authController');
-const { protectRoute } = require('../middleware/authMiddleware');
+import express from 'express';
+import { login, signup, logout,updateProfile, checkAuth } from '../controllers/authController';
+import { protectRoute } from '../middleware/authMiddleware';
 
 const router = express.Router();
 
