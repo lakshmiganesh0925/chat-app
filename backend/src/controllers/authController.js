@@ -1,11 +1,11 @@
-const { generateToken } = require('../lib/utils');
-const User = require('../models/userModel');
-const bcrypt = require('bcryptjs');
+import { generateToken } from '../lib/utils.js';
+import User from '../models/userModel.js';
+import  bcrypt from 'bcryptjs';
 
-const cloudinary = require('../lib/cloudinary');
+import  cloudinary from '../lib/cloudinary.js';
 
 
-module.exports.signup = async(req,res)=>{
+export const signup = async(req,res)=>{
     const {fullName,email,password} =req.body;
     try {
         if(!fullName|| !email|| !password){
@@ -55,7 +55,7 @@ module.exports.signup = async(req,res)=>{
     }
 }
 
-module.exports.login = async(req,res) =>{
+export const login = async(req,res) =>{
     const {email,password} =req.body;
     try {
         const  user = await User.findOne({email})
@@ -84,7 +84,7 @@ module.exports.login = async(req,res) =>{
     }
 }
 
-module.exports.logout = async(req,res) =>{
+export const logout = async(req,res) =>{
     try{
         res.cookie("jwt","",{maxAge:0})
         res.status(200).json({message:"Logged out successfully"});
@@ -95,7 +95,7 @@ module.exports.logout = async(req,res) =>{
     }
 }
 
-module.exports.updateProfile=async(req,res)=>{
+export const updateProfile=async(req,res)=>{
     try {
         const {profilePic} =req.body;
         const userId=req.user._id
@@ -112,7 +112,7 @@ module.exports.updateProfile=async(req,res)=>{
     }
 }
 
-module.exports.checkAuth = (req,res)=>{
+export const checkAuth = (req,res)=>{
     try{
       res.status(200).json(req.user._id);
     }
